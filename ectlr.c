@@ -164,11 +164,9 @@ static ssize_t ectlr_store(struct kobject *kobj, struct kobj_attribute *attr, co
     pr_info("Setting CPU %d %s to 0x%016llx\n", smp_id, attr->attr.name, val);
     ectlr_store_infos[smp_id] = info;
     smp_call_function_single(smp_id, _ectlr_store, &info, 0);
-    /*
     if (info.result != 0) {
         return info.result;
     }
-     */
     return count;
 }
 
